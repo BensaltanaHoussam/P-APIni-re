@@ -57,4 +57,27 @@ class OrderController extends Controller
 
         return response()->json($order);
     }
+
+
+
+
+    public function markAsPrepared($id)
+    {
+        $order = $this->orderService->getOrder($id);
+
+        if ($order->status !== 'pending') {
+            return response()->json(['message' => 'Only pending orders can be marked as prepared'], 400);
+        }
+
+        $order->status = 'prepared';
+        $order->save();
+
+        return response()->json($order);
+    }
+
+    public function listPendingOrders()
+    {
+        $orders = $this->orderService->getPendingOrders();
+        return response()->json($orders);
+    }
 }

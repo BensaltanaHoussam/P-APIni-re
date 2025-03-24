@@ -47,5 +47,10 @@ Route::middleware('auth:api')->group(function () {
         Route::patch('orders/{id}/cancel', [OrderController::class, 'cancel']);
     }); 
 
+    Route::middleware('employee')->group(function () {
+        Route::get('orders/pending', [OrderController::class, 'listPendingOrders']);
+        Route::patch('orders/{id}/prepare', [OrderController::class, 'markAsPrepared']);
+    });
+
 
 });

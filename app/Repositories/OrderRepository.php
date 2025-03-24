@@ -24,4 +24,12 @@ class OrderRepository implements OrderRepositoryInterface
     {
         return Order::with('plant')->findOrFail($orderId);
     }
+
+    public function getOrdersByStatus($status)
+    {
+        return Order::with(['user', 'plant'])
+            ->where('status', $status)
+            ->orderBy('created_at', 'asc')
+            ->get();
+    }
 }

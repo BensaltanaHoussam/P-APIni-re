@@ -44,4 +44,6 @@ class PlantService
         return $this->plantRepository->getPlantBySlug($slug);
     }
 
+ 
+
 }

@@ -41,4 +41,9 @@ class OrderService
     {
         return $this->orderRepository->getOrderById($orderId);
     }
+
+    public function getPendingOrders()
+    {
+        return $this->orderRepository->getOrdersByStatus('pending');
+    }
 }
