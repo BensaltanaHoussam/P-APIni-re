@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlantController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -35,6 +36,9 @@ Route::middleware('auth:api')->group(function () {
         Route::post('plants', [PlantController::class, 'store']);
         Route::put('plants/{plant}', [PlantController::class, 'update']);
         Route::delete('plants/{plant}', [PlantController::class, 'destroy']);
+
+        // Statistics
+        Route::get('statistics', [StatisticsController::class, 'index']);
     
     });
 
